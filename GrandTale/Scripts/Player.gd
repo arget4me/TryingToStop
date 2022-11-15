@@ -1,9 +1,9 @@
 extends KinematicBody2D
 class_name Player
 
-export(float) var WalkSpeed = 300.0
-export(float) var WalkAcc = 8.0
-export(float) var WalkFriction = 0.05
+export(float) var WalkSpeed = 320.0
+export(float) var WalkAcc = 10.0
+export(float) var WalkFriction = 0.1
 
 var Velocity = Vector2.ZERO
 var WantedVelocity = Vector2.ZERO
