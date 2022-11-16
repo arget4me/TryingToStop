@@ -9,6 +9,10 @@
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 164, 130 )
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+smoothing_enabled = true
+
 [node name="Rock" parent="." instance=ExtResource( 2 )]
 position = Vector2( 304, 75 )
 
@@ -38,6 +42,27 @@ position = Vector2( 434, 443 )
 
 [node name="Rock10" parent="." instance=ExtResource( 2 )]
 position = Vector2( 816, 260 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 44, 413 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 3 )]
+position = Vector2( -103, 173 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 240, -87 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 649, -37 )
+
+[node name="Enemy6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 997, 170 )
+
+[node name="Enemy7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 908, 422 )
+
+[node name="Enemy8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 482, 577 )
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 419, 207 )
