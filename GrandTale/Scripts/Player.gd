@@ -40,6 +40,6 @@ func _process(delta):
 	WantedVelocity = WantedVelocity.normalized() * WalkSpeed
 	Velocity = lerp(Velocity, WantedVelocity, WalkAcc * delta)
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	Velocity = move_and_slide(Velocity)
 	Velocity = lerp(Velocity, Vector2.ZERO, WalkFriction)
