@@ -16,6 +16,7 @@ func _on_Area2D_body_entered(body):
 func _on_Area2D_body_exited(body):
 	if body.name == "Player":
 		Player = null
+		PlayerDir = Vector2.ZERO
 
 func _process(delta):
 	if Player != null:

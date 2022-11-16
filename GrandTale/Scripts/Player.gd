@@ -4,6 +4,9 @@ class_name Player
 export(float) var WalkSpeed = 320.0
 export(float) var WalkAcc = 10.0
 export(float) var WalkFriction = 0.1
+export(float) var DashAmout = 1200
+export(float) var DashCooldown = 1.2
+var DashTimer = 0
 
 var Velocity = Vector2.ZERO
 var WantedVelocity = Vector2.ZERO
@@ -38,7 +41,17 @@ func _process(delta):
 	if Input.is_action_pressed("ui_right"):
 		WantedVelocity += Vector2.RIGHT
 	WantedVelocity = WantedVelocity.normalized() * WalkSpeed
+	
+	if DashTimer <= 0:
+		if Input.is_mouse_button_pressed(1):
+			Velocity += dir * DashAmout
+			DashTimer = DashCooldown
+	else:
+		DashTimer -= delta
+	
 	Velocity = lerp(Velocity, WantedVelocity, WalkAcc * delta)
+	
+	
 	
 func _physics_process(_delta):
 	Velocity = move_and_slide(Velocity)
