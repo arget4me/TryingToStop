@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Rock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Item.tscn" type="PackedScene" id=4]
 
 [node name="SampleScene" type="Node2D"]
 
@@ -66,3 +67,78 @@ position = Vector2( 482, 577 )
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 419, 207 )
+
+[node name="Item" parent="." instance=ExtResource( 4 )]
+position = Vector2( 171, 218 )
+
+[node name="Item2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 262, 300 )
+
+[node name="Item3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 411, 54 )
+
+[node name="Item4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 144, 35 )
+
+[node name="Item5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 17, 275 )
+
+[node name="Item6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 277, 466 )
+
+[node name="Item7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 621, 299 )
+
+[node name="Item8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 725, 138 )
+
+[node name="Item9" parent="." instance=ExtResource( 4 )]
+position = Vector2( 781, -31 )
+
+[node name="Item10" parent="." instance=ExtResource( 4 )]
+position = Vector2( 512, -79 )
+
+[node name="Item11" parent="." instance=ExtResource( 4 )]
+position = Vector2( 395, -87 )
+
+[node name="Item12" parent="." instance=ExtResource( 4 )]
+position = Vector2( 119, -70 )
+
+[node name="Item13" parent="." instance=ExtResource( 4 )]
+position = Vector2( 32, -49 )
+
+[node name="Item14" parent="." instance=ExtResource( 4 )]
+position = Vector2( -17, 48 )
+
+[node name="Item15" parent="." instance=ExtResource( 4 )]
+position = Vector2( 27, 144 )
+
+[node name="Item16" parent="." instance=ExtResource( 4 )]
+position = Vector2( -40, 281 )
+
+[node name="Item17" parent="." instance=ExtResource( 4 )]
+position = Vector2( -63, 352 )
+
+[node name="Item18" parent="." instance=ExtResource( 4 )]
+position = Vector2( -49, 537 )
+
+[node name="Item19" parent="." instance=ExtResource( 4 )]
+position = Vector2( 142, 560 )
+
+[node name="Item20" parent="." instance=ExtResource( 4 )]
+position = Vector2( 320, 547 )
+
+[node name="Item21" parent="." instance=ExtResource( 4 )]
+position = Vector2( 650, 552 )
+
+[node name="Item22" parent="." instance=ExtResource( 4 )]
+position = Vector2( 809, 548 )
+
+[node name="Item23" parent="." instance=ExtResource( 4 )]
+position = Vector2( 891, 298 )
+
+[node name="Item24" parent="." instance=ExtResource( 4 )]
+position = Vector2( 858, 187 )
+
+[node name="Item25" parent="." instance=ExtResource( 4 )]
+position = Vector2( 921, 18 )
