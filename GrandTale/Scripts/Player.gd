@@ -4,7 +4,7 @@ class_name Player
 export(float) var WalkSpeed = 320.0
 export(float) var WalkAcc = 10.0
 export(float) var WalkFriction = 0.1
-export(float) var DashAmout = 1200
+export(float) var DashAmout = 1200.0
 export(float) var DashCooldown = 1.2
 var DashTimer = 0
 
