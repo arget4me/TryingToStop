@@ -181,12 +181,17 @@ position = Vector2( 816, 260 )
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource( 5 )
 
+[node name="ColorRect" type="ColorRect" parent="HUD"]
+margin_right = 276.0
+margin_bottom = 70.0
+color = Color( 0.172549, 0.247059, 0.317647, 0.415686 )
+
 [node name="Health" type="ColorRect" parent="HUD"]
-margin_left = 23.0
-margin_top = 656.0
-margin_right = 173.0
-margin_bottom = 679.0
-color = Color( 0.454902, 0.435294, 0.435294, 1 )
+margin_left = 25.0
+margin_top = 16.0
+margin_right = 175.0
+margin_bottom = 39.0
+color = Color( 0.282353, 0.27451, 0.345098, 1 )
 
 [node name="CurrentHealth" type="ColorRect" parent="HUD/Health"]
 margin_right = 150.0
@@ -198,11 +203,11 @@ margin_right = 40.0
 margin_bottom = 14.0
 
 [node name="Cooldown" type="ColorRect" parent="HUD"]
-margin_left = 28.0
-margin_top = 684.0
-margin_right = 169.0
-margin_bottom = 698.0
-color = Color( 0.454902, 0.435294, 0.435294, 1 )
+margin_left = 30.0
+margin_top = 44.0
+margin_right = 171.0
+margin_bottom = 58.0
+color = Color( 0.282353, 0.27451, 0.345098, 1 )
 
 [node name="CurrentCooldown" type="ColorRect" parent="HUD/Cooldown"]
 margin_right = 141.0
@@ -215,11 +220,11 @@ margin_bottom = 14.0
 text = "Dash"
 
 [node name="Gold" type="ColorRect" parent="HUD"]
-margin_left = 186.0
-margin_top = 685.0
-margin_right = 257.0
-margin_bottom = 699.0
-color = Color( 0.454902, 0.435294, 0.435294, 1 )
+margin_left = 189.0
+margin_top = 21.0
+margin_right = 260.0
+margin_bottom = 35.0
+color = Color( 0.282353, 0.27451, 0.345098, 1 )
 
 [node name="Label" type="Label" parent="HUD/Gold"]
 margin_right = 40.0

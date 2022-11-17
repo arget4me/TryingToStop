@@ -26,8 +26,15 @@ var WantedVelocity = Vector2.ZERO
 onready var HandNode = $Hand
 var HandSpringDistance : float
 
+onready var TempSprite = $ColorRect_TempSprite
+onready var TempSpriteHand = $Hand/ColorRect_TempHand
+var TempSpriteColor
+var TempSpriteHandColor
+
 func _ready():
 	HandSpringDistance = HandNode.position.length()
+	TempSpriteColor = TempSprite.color
+	TempSpriteHandColor = TempSpriteHand.color
 	
 func _process(delta):
 	
@@ -66,13 +73,18 @@ func GainGold(var Amount : int):
 	particle.StartSimulation(global_position + 20 * Vector2.UP, 2.0, 20, 30, 3.0, Color.yellow, "+" + str(Amount) + " Gold")
 		
 
+func UpdateHealthColor():
+	var HealthRatio = 1 - clamp(float(Health) / float(MaxHealth - 50), 0.2, 1.0)
+	TempSprite.color = lerp(TempSpriteColor, Color.red, HealthRatio)
+	TempSpriteHand.color = lerp(TempSpriteHandColor, Color.red, HealthRatio)
+
 func RecoverHealth(var Amount : int):
 	Health = clamp(Health + Amount, 0, MaxHealth)
 	emit_signal("health_changed", Health)
 	var particle = LabelParticle.instance()
 	get_tree().get_root().add_child(particle)
 	particle.StartSimulation(global_position + 20 * Vector2.UP, 2.0, 20, 30, 3.0, Color.red, "+" + str(Amount))
-		
+	UpdateHealthColor()
 	
 func _physics_process(_delta):
 	Velocity = move_and_slide(Velocity)
@@ -86,4 +98,4 @@ func _on_Area2D_body_entered(body):
 		var particle = LabelParticle.instance()
 		get_tree().get_root().add_child(particle)
 		particle.StartSimulation(global_position + 20 * Vector2.UP, 2.0, 20, 30, 3.0, Color.red, "-" + str(body.DamagePerHit))
-		
+		UpdateHealthColor()

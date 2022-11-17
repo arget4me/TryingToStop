@@ -30,4 +30,4 @@ func _on_Player_cooldown_changed(cooldown_percent):
 
 
 func _on_Player_gold_changed(gold):
-	gold_label.text = "Gold: %7d" % gold
+	gold_label.text = "Gold: %04d" % gold
