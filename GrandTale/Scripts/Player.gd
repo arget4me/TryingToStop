@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name Player
 
+signal health_changed(health)
+
 export(int) var Health = 100
 
 export(float) var WalkSpeed = 320.0
@@ -64,3 +66,4 @@ func _physics_process(_delta):
 func _on_Area2D_body_entered(body):
 	if body is EnemyBase:
 		Health -= body.DamagePerHit
+		emit_signal("health_changed", Health)
