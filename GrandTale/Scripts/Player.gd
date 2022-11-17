@@ -2,6 +2,7 @@ extends KinematicBody2D
 class_name Player
 
 signal health_changed(health)
+signal cooldown_changed(cooldown_percent)
 
 export(int) var Health = 100
 
@@ -21,14 +22,6 @@ var HandSpringDistance : float
 
 func _ready():
 	HandSpringDistance = HandNode.position.length()
-	
-#
-#	 if Input.is_mouse_button_pressed(1): # when click Left mouse button
-#        target = get_global_mouse_position()
-#    velocity = global_position.direction_to(target) * speed
-#    if global_position.distance_to(target) > 5:
-#        velocity = move_and_slide(velocity)
-	
 	
 func _process(delta):
 	
@@ -51,8 +44,10 @@ func _process(delta):
 		if Input.is_mouse_button_pressed(1):
 			Velocity += dir * DashAmout
 			DashTimer = DashCooldown
+			emit_signal("cooldown_changed", 1.0 - clamp(DashTimer/DashCooldown, 0.0, 1.0))
 	else:
 		DashTimer -= delta
+		emit_signal("cooldown_changed", 1.0 - clamp(DashTimer/DashCooldown, 0.0, 1.0))
 	
 	Velocity = lerp(Velocity, WantedVelocity, WalkAcc * delta)
 	

@@ -169,4 +169,22 @@ color = Color( 0.956863, 0.0117647, 0.0117647, 1 )
 margin_right = 40.0
 margin_bottom = 14.0
 
+[node name="Cooldown" type="ColorRect" parent="HUD"]
+margin_left = 28.0
+margin_top = 684.0
+margin_right = 169.0
+margin_bottom = 698.0
+color = Color( 0.454902, 0.435294, 0.435294, 1 )
+
+[node name="CurrentCooldown" type="ColorRect" parent="HUD/Cooldown"]
+margin_right = 141.0
+margin_bottom = 14.0
+color = Color( 0.0117647, 0.160784, 0.956863, 1 )
+
+[node name="Label" type="Label" parent="HUD/Cooldown"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Dash"
+
+[connection signal="cooldown_changed" from="Player" to="HUD" method="_on_Player_cooldown_changed"]
 [connection signal="health_changed" from="Player" to="HUD" method="_on_Player_health_changed"]
