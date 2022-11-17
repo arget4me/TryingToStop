@@ -1,5 +1,7 @@
-extends KinematicBody2D
+extends EnemyBase
 class_name Enemy
+
+export(float) var DamagePerHit = 10.0
 
 export(float) var WalkSpeed = 300.0
 export(float) var WalkAcc = 8.0

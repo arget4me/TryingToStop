@@ -1,11 +1,14 @@
 extends KinematicBody2D
 class_name Player
 
+export(int) var Health = 100
+
 export(float) var WalkSpeed = 320.0
 export(float) var WalkAcc = 10.0
 export(float) var WalkFriction = 0.1
 export(float) var DashAmout = 1200.0
 export(float) var DashCooldown = 1.2
+
 var DashTimer = 0
 
 var Velocity = Vector2.ZERO
@@ -56,3 +59,8 @@ func _process(delta):
 func _physics_process(_delta):
 	Velocity = move_and_slide(Velocity)
 	Velocity = lerp(Velocity, Vector2.ZERO, WalkFriction)
+
+
+func _on_Area2D_body_entered(body):
+	if body is EnemyBase:
+		Health -= body.DamagePerHit

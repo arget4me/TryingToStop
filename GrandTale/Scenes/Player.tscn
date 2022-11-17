@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -17,9 +19,6 @@ margin_top = -10.0
 margin_right = 10.0
 margin_bottom = 10.0
 color = Color( 0.0705882, 0.588235, 0.466667, 1 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
 
 [node name="Hand" type="Node2D" parent="."]
 position = Vector2( 10, 0 )
@@ -38,3 +37,13 @@ margin_right = 4.0
 margin_bottom = 3.0
 rect_pivot_offset = Vector2( 4, 5 )
 color = Color( 0.0431373, 0.45098, 0.352941, 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="DamageCollision" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
