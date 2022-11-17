@@ -5,6 +5,7 @@ signal health_changed(health)
 signal cooldown_changed(cooldown_percent)
 
 export(int) var Health = 100
+var MaxHealth = Health
 
 export(float) var WalkSpeed = 320.0
 export(float) var WalkAcc = 10.0
@@ -51,7 +52,10 @@ func _process(delta):
 	
 	Velocity = lerp(Velocity, WantedVelocity, WalkAcc * delta)
 	
-	
+
+func RecoverHealth(var Amount : int):
+	Health = clamp(Health + Amount, 0, MaxHealth)
+	emit_signal("health_changed", Health)
 	
 func _physics_process(_delta):
 	Velocity = move_and_slide(Velocity)

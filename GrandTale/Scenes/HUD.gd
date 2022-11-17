@@ -25,3 +25,4 @@ func _on_Player_health_changed(health):
 
 func _on_Player_cooldown_changed(cooldown_percent):
 	cooldown_bar.rect_size.x = cooldown_bar_width * cooldown_percent
+	cooldown_bar.rect_size.x = cooldown_bar_width * cooldown_percent
