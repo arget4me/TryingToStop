@@ -7,6 +7,7 @@ onready var health_container = $Health
 onready var cooldown_bar = $Cooldown/CurrentCooldown
 onready var cooldown_container = $Cooldown
 
+onready var gold_label = $Gold/Label
 
 var health_bar_width : int
 var cooldown_bar_width : int
@@ -26,3 +27,7 @@ func _on_Player_health_changed(health):
 func _on_Player_cooldown_changed(cooldown_percent):
 	cooldown_bar.rect_size.x = cooldown_bar_width * cooldown_percent
 	cooldown_bar.rect_size.x = cooldown_bar_width * cooldown_percent
+
+
+func _on_Player_gold_changed(gold):
+	gold_label.text = "Gold: %7d" % gold

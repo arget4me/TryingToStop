@@ -214,5 +214,19 @@ margin_right = 40.0
 margin_bottom = 14.0
 text = "Dash"
 
+[node name="Gold" type="ColorRect" parent="HUD"]
+margin_left = 186.0
+margin_top = 685.0
+margin_right = 257.0
+margin_bottom = 699.0
+color = Color( 0.454902, 0.435294, 0.435294, 1 )
+
+[node name="Label" type="Label" parent="HUD/Gold"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 0.984314, 0, 1 )
+text = "Gold: 0000"
+
 [connection signal="cooldown_changed" from="Player" to="HUD" method="_on_Player_cooldown_changed"]
+[connection signal="gold_changed" from="Player" to="HUD" method="_on_Player_gold_changed"]
 [connection signal="health_changed" from="Player" to="HUD" method="_on_Player_health_changed"]

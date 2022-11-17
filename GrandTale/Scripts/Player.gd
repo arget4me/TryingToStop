@@ -1,11 +1,16 @@
 extends KinematicBody2D
 class_name Player
 
+onready var LabelParticle =  preload("res://Scenes/LabelParticle.tscn")
+
 signal health_changed(health)
+signal gold_changed(gold)
 signal cooldown_changed(cooldown_percent)
 
 export(int) var Health = 100
 var MaxHealth = Health
+
+var Gold = 0
 
 export(float) var WalkSpeed = 320.0
 export(float) var WalkAcc = 10.0
@@ -51,11 +56,23 @@ func _process(delta):
 		emit_signal("cooldown_changed", 1.0 - clamp(DashTimer/DashCooldown, 0.0, 1.0))
 	
 	Velocity = lerp(Velocity, WantedVelocity, WalkAcc * delta)
-	
+
+
+func GainGold(var Amount : int):
+	Gold += Amount
+	emit_signal("gold_changed", Gold)
+	var particle = LabelParticle.instance()
+	get_tree().get_root().add_child(particle)
+	particle.StartSimulation(global_position + 20 * Vector2.UP, 2.0, 20, 30, 3.0, Color.yellow, "+" + str(Amount) + " Gold")
+		
 
 func RecoverHealth(var Amount : int):
 	Health = clamp(Health + Amount, 0, MaxHealth)
 	emit_signal("health_changed", Health)
+	var particle = LabelParticle.instance()
+	get_tree().get_root().add_child(particle)
+	particle.StartSimulation(global_position + 20 * Vector2.UP, 2.0, 20, 30, 3.0, Color.red, "+" + str(Amount))
+		
 	
 func _physics_process(_delta):
 	Velocity = move_and_slide(Velocity)
@@ -66,3 +83,7 @@ func _on_Area2D_body_entered(body):
 	if body is EnemyBase:
 		Health -= body.DamagePerHit
 		emit_signal("health_changed", Health)
+		var particle = LabelParticle.instance()
+		get_tree().get_root().add_child(particle)
+		particle.StartSimulation(global_position + 20 * Vector2.UP, 2.0, 20, 30, 3.0, Color.red, "-" + str(body.DamagePerHit))
+		
