@@ -10,8 +10,6 @@ signal cooldown_changed(cooldown_percent)
 export(int) var Health = 100
 var MaxHealth = Health
 
-var Gold = 0
-
 export(float) var WalkSpeed = 320.0
 export(float) var WalkAcc = 10.0
 export(float) var WalkFriction = 0.1
@@ -66,8 +64,8 @@ func _process(delta):
 
 
 func GainGold(var Amount : int):
-	Gold += Amount
-	emit_signal("gold_changed", Gold)
+	GameManager.Gold += Amount
+	emit_signal("gold_changed", GameManager.Gold)
 	var particle = LabelParticle.instance()
 	get_tree().get_root().add_child(particle)
 	particle.StartSimulation(global_position + 20 * Vector2.UP, 2.0, 20, 30, 3.0, Color.yellow, "+" + str(Amount) + " Gold")
@@ -83,13 +81,16 @@ func RecoverHealth(var Amount : int):
 	emit_signal("health_changed", Health)
 	var particle = LabelParticle.instance()
 	get_tree().get_root().add_child(particle)
-	particle.StartSimulation(global_position + 20 * Vector2.UP, 2.0, 20, 30, 3.0, Color.red, "+" + str(Amount))
+	particle.StartSimulation(global_position + 20 * Vector2.UP, 2.0, 20, 30, 3.0, Color.red, "+" + str(Amount) + " Health")
 	UpdateHealthColor()
-	
+
 func _physics_process(_delta):
 	Velocity = move_and_slide(Velocity)
 	Velocity = lerp(Velocity, Vector2.ZERO, WalkFriction)
 
+func Die():
+	get_tree().change_scene("res://Scenes/HUB.tscn")
+	queue_free()
 
 func _on_Area2D_body_entered(body):
 	if body is EnemyBase:
@@ -97,5 +98,8 @@ func _on_Area2D_body_entered(body):
 		emit_signal("health_changed", Health)
 		var particle = LabelParticle.instance()
 		get_tree().get_root().add_child(particle)
-		particle.StartSimulation(global_position + 20 * Vector2.UP, 2.0, 20, 30, 3.0, Color.red, "-" + str(body.DamagePerHit))
+		particle.StartSimulation(global_position + 20 * Vector2.UP, 2.0, 20, 30, 3.0, Color.red, "-" + str(body.DamagePerHit) + " Health")
 		UpdateHealthColor()
+		
+		if Health <= 0:
+			Die()

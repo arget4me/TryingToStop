@@ -17,7 +17,8 @@ func _ready():
 	health_label.text = String(health_bar_width / 100 * 100)
 
 	cooldown_bar_width = int(cooldown_container.rect_size.x)
-
+	
+	_on_Player_gold_changed(GameManager.Gold)
 
 func _on_Player_health_changed(health):
 	health_bar.rect_size.x = (health_bar_width / 100 * health) / 100 * health_bar_width
